@@ -14,53 +14,78 @@ ctx.rect(10, 20, 30, 40);
 ctx.stroke();
 ctx.fill();
 
-function handleCanvasUp(num) {
-  ctx.clearRect(10, 20, 30, 40);
+// function handleCanvasUp(num) {
+//   ctx.clearRect(10, 20, 30, 40);
+//   ctx.fillStyle = "black";
+//   ctx.strokeStyle = "black";
+//   ctx.rect(10, 20 - num, 30, 40);
+//   ctx.stroke();
+//   ctx.fill();
+// }
+
+// function handleCanvasDown(num) {
+//   ctx.clearRect(10, 20, 30, 40);
+//   ctx.fillStyle = "black";
+//   ctx.strokeStyle = "black";
+//   ctx.rect(10, 20 + num, 30, 40);
+//   ctx.stroke();
+//   ctx.fill();
+// }
+
+// function hanldeCanvasLeft(num) {
+//   ctx.clearRect(10, 20, 30, 40);
+//   ctx.fillStyle = "black";
+//   ctx.strokeStyle = "black";
+//   ctx.rect(10 - num, 20, 30, 40);
+//   ctx.stroke();
+//   ctx.fill();
+// }
+
+// function handleCanvasRight(num) {
+//   ctx.clearRect(10, 20, 30, 40);
+//   ctx.fillStyle = "black";
+//   ctx.strokeStyle = "black";
+//   ctx.rect(10 + num, 20, 30, 40);
+//   ctx.stroke();
+//   ctx.fill();
+// }
+
+function handleCanvas(num1,num2){
+    ctx.clearRect(10, 20, 30, 40);
   ctx.fillStyle = "black";
   ctx.strokeStyle = "black";
-  ctx.rect(10, 20 - num, 30, 40);
+  ctx.rect(10+num1, 20+num2, 30, 40);
   ctx.stroke();
   ctx.fill();
 }
 
-function handleCanvasDown(num) {
-  ctx.clearRect(10, 20, 30, 40);
-  ctx.fillStyle = "black";
-  ctx.strokeStyle = "black";
-  ctx.rect(10, 20 + num, 30, 40);
-  ctx.stroke();
-  ctx.fill();
-}
-
-function hanldeCanvasLeft(num) {
-  ctx.clearRect(10, 20, 30, 40);
-  ctx.fillStyle = "black";
-  ctx.strokeStyle = "black";
-  ctx.rect(10 - num, 20, 30, 40);
-  ctx.stroke();
-  ctx.fill();
-}
-
-function handleCanvasRight(num) {
-  ctx.clearRect(10, 20, 30, 40);
-  ctx.fillStyle = "black";
-  ctx.strokeStyle = "black";
-  ctx.rect(10 + num, 20, 30, 40);
-  ctx.stroke();
-  ctx.fill();
-}
+let direction = [];
 
 function detectWhichKey(event) {
   if (event.keyCode == 39 || event.keyCode == 37) {
-    count = count + 1;
-    handleCanvasRight(count);
-  } else if (event.keyCode == 40) {
-    count = count + 1;
-    handleCanvasDown(count);
-  } else if (event.keyCode == 38) {
-    count = count + 1;
-    handleCanvasUp(count);
-  } else return;
+    countX = countX+ 1;
+    direction[0] = countX;    
+  }
+  if(event.keyCode == 40 || event.keyCode == 38){
+    countY = countY + 1;
+    direction[1] = countY;//마이너스조건 만들기
+  }
+  const [x,y] = direction;
+  handleCanvas(x,y);
+ 
 }
+  
+
+//   handleCanvasRight(countX);
+  // } else if () {
+  //   count = count + 1;
+  //   handleCanvasDown(count);
+  // } else if (event.keyCode == 38) {
+  //   count = count + 1;
+  //   handleCanvasUp(count);
+  // } else return;
+
 
 //한꺼번에
+
+
